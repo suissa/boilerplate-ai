@@ -10,11 +10,25 @@
   "scripts": {
     "check-versions": "node check-versions.js",
     "setup": "npm run check-versions && echo '✅ Setup verificado com sucesso!'",
-    "dev": "echo '🚀 Iniciando desenvolvimento...' && npm run check-versions",
-    "build": "echo '🔨 Build em desenvolvimento...'",
-    "test": "echo '🧪 Testes em desenvolvimento...'",
-    "lint": "echo '🔍 Linting em desenvolvimento...'",
-    "lint:fix": "echo '🔧 Corrigindo problemas de linting...'"
+    "dev": "npx nx run-many --target=serve --all",
+    "dev:frontend": "npx nx serve frontend",
+    "dev:backend": "npx nx serve backend",
+    "build": "npx nx run-many --target=build --all",
+    "build:frontend": "npx nx build frontend",
+    "build:backend": "npx nx build backend",
+    "test": "npx nx run-many --target=test --all",
+    "test:frontend": "npx nx test frontend",
+    "test:backend": "npx nx test backend",
+    "lint": "npx nx run-many --target=lint --all",
+    "lint:fix": "npx nx run-many --target=lint --all --fix",
+    "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md}\"",
+    "format:check": "prettier --check \"**/*.{ts,tsx,js,jsx,json,md}\"",
+    "type-check": "npx tsc --noEmit",
+    "clean": "npx nx reset && rm -rf dist build .nx",
+    "env:dev": "cp env.development .env",
+    "env:test": "cp env.test .env",
+    "env:prod": "cp env.production .env",
+    "validate:env": "node -e \"require('./config/env.config.ts').validateConfig()\""
   },
   "engines": {
     "node": ">=20.17.0",
@@ -40,9 +54,21 @@
   },
   "homepage": "https://github.com/rastamansp/boilerplate-ai#readme",
   "devDependencies": {
+    "@types/node": "^24.0.13",
+    "@typescript-eslint/eslint-plugin": "^8.36.0",
+    "@typescript-eslint/parser": "^8.36.0",
+    "eslint": "^9.31.0",
+    "eslint-config-prettier": "^10.1.5",
+    "eslint-plugin-prettier": "^5.5.1",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "nx": "21.2.3",
+    "prettier": "^3.6.2",
     "semver": "^7.5.4",
-    "nx": "21.2.3"
+    "typescript": "^5.8.3"
   },
-  "dependencies": {},
-  "packageManager": "npm@10.0.0"
+  "packageManager": "npm@10.0.0",
+  "dependencies": {
+    "dotenv": "^17.2.0"
+  }
 }

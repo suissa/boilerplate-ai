@@ -20,35 +20,31 @@
 
 ## 🔄 Histórico de Commits e Implementações
 
-### Commit: 90ec3f8
+### Commit: [novo hash]
 
 **Data:** 2025-01-27
 **Tipo:** chore
-**Descrição:** chore(monorepo): estrutura inicial Nx, .gitignore e regras atualizadas
+**Descrição:** chore(env): configuração dos arquivos .env para dev, test e prod, e carregamento tipado
 
 #### Alterações Realizadas
 
-- [x] Inicialização do workspace Nx
-- [x] Criação da estrutura de pastas (apps/frontend, apps/backend, libs/shared)
-- [x] Configuração do .gitignore para monorepo
-- [x] Atualização das regras do projeto (.cursorrules)
-- [x] Instalação do Nx CLI globalmente
-- [x] Configuração inicial do package.json com scripts
+- [x] Criação dos arquivos env.development, env.test e env.production
+- [x] Adição de scripts para alternar ambientes
+- [x] Criação de config/env.config.ts para carregamento tipado
+- [x] Atualização do package.json com scripts de ambiente
 
 #### Arquivos Modificados
 
-- [x] .gitignore - Configuração para monorepo Nx
-- [x] .cursorrules - Regras atualizadas
-- [x] nx.json - Configuração do workspace Nx
-- [x] package.json - Scripts e dependências atualizados
-- [x] apps/ - Estrutura de pastas criada
-- [x] libs/ - Estrutura de pastas criada
+- [x] env.development - Ambiente de desenvolvimento
+- [x] env.test - Ambiente de testes
+- [x] env.production - Ambiente de produção
+- [x] config/env.config.ts - Carregamento e validação tipada
+- [x] package.json - Scripts de ambiente
 
 #### Próximos Passos
 
-- [x] 1.1 Inicializar workspace Nx
-- [x] 1.2 Configurar estrutura de pastas
-- [ ] 1.3 Configurar dependências compartilhadas
+- [ ] 2.1 Criar aplicação NestJS com TypeScript
+- [ ] 3.1 Criar aplicação React com Vite + TypeScript
 
 ---
 
@@ -56,19 +52,19 @@
 
 ### Fase 1: Configuração Inicial do Monorepo
 
-- [ ] 1.1 Inicializar workspace Nx **[Complexidade: Baixa]**
-- [ ] 1.2 Configurar estrutura de pastas (apps/frontend, apps/backend, libs/shared) **[Complexidade: Baixa]**
-- [ ] 1.3 Configurar dependências compartilhadas **[Complexidade: Média]**
-  - [ ] 1.3.1 Instalar dependências base do Nx **[Complexidade: Baixa]**
-  - [ ] 1.3.2 Configurar TypeScript compartilhado **[Complexidade: Baixa]**
-  - [ ] 1.3.3 Configurar ESLint compartilhado **[Complexidade: Média]**
-  - [ ] 1.3.4 Configurar Prettier compartilhado **[Complexidade: Baixa]**
-- [ ] 1.4 Configurar scripts de desenvolvimento **[Complexidade: Média]**
-  - [ ] 1.4.1 Configurar script de desenvolvimento simultâneo **[Complexidade: Média]**
-  - [ ] 1.4.2 Configurar script de build **[Complexidade: Média]**
-  - [ ] 1.4.3 Configurar script de testes **[Complexidade: Média]**
-  - [ ] 1.4.4 Configurar script de linting **[Complexidade: Baixa]**
-- [ ] 1.5 Configurar arquivos .env para dev/test/prod **[Complexidade: Baixa]**
+- [x] 1.1 Inicializar workspace Nx **[Complexidade: Baixa]**
+- [x] 1.2 Configurar estrutura de pastas (apps/frontend, apps/backend, libs/shared) **[Complexidade: Baixa]**
+- [x] 1.3 Configurar dependências compartilhadas **[Complexidade: Média]**
+  - [x] 1.3.1 Instalar dependências base do Nx **[Complexidade: Baixa]**
+  - [x] 1.3.2 Configurar TypeScript compartilhado **[Complexidade: Baixa]**
+  - [x] 1.3.3 Configurar ESLint compartilhado **[Complexidade: Média]**
+  - [x] 1.3.4 Configurar Prettier compartilhado **[Complexidade: Baixa]**
+- [x] 1.4 Configurar scripts de desenvolvimento **[Complexidade: Média]**
+  - [x] 1.4.1 Configurar script de desenvolvimento simultâneo **[Complexidade: Média]**
+  - [x] 1.4.2 Configurar script de build **[Complexidade: Média]**
+  - [x] 1.4.3 Configurar script de testes **[Complexidade: Média]**
+  - [x] 1.4.4 Configurar script de linting **[Complexidade: Baixa]**
+- [x] 1.5 Configurar arquivos .env para dev/test/prod **[Complexidade: Baixa]**
 
 ### Fase 2: Backend NestJS (Sistema de Autenticação por Código)
 
@@ -299,4 +295,4 @@
 
 ---
 
-*Este arquivo será atualizado a cada commit significativo do projeto.*
+_Este arquivo será atualizado a cada commit significativo do projeto._
