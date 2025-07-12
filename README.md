@@ -118,13 +118,13 @@ exemplo/
 
 ### Endpoints de Autenticação
 
-| Método | Endpoint | Descrição |
-|--------|----------|-----------|
-| `POST` | `/auth/register` | Cadastrar novo usuário |
-| `POST` | `/auth/login` | Solicitar código de login |
+| Método | Endpoint            | Descrição                 |
+| ------ | ------------------- | ------------------------- |
+| `POST` | `/auth/register`    | Cadastrar novo usuário    |
+| `POST` | `/auth/login`       | Solicitar código de login |
 | `POST` | `/auth/verify-code` | Verificar código de login |
-| `GET` | `/auth/me` | Dados do usuário logado |
-| `POST` | `/auth/logout` | Logout do usuário |
+| `GET`  | `/auth/me`          | Dados do usuário logado   |
+| `POST` | `/auth/logout`      | Logout do usuário         |
 
 ### Respostas Padrão
 

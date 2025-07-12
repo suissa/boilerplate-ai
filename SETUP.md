@@ -4,26 +4,40 @@
 
 ### Software Necessário
 
-- **Node.js** 18+ ([Download](https://nodejs.org/))
-- **Git** ([Download](https://git-scm.com/))
-- **MongoDB** ([Download](https://www.mongodb.com/try/download/community))
-- **Redis** (Opcional - para rate limiting avançado)
+- **Node.js** 20.17.0+ ([Download](https://nodejs.org/))
+- **npm** 10.0.0+ (vem com Node.js)
+- **Git** 2.40.0+ ([Download](https://git-scm.com/))
+- **MongoDB** 7.0+ ([Download](https://www.mongodb.com/try/download/community))
+- **Redis** 7.0+ (Opcional - para rate limiting avançado)
+- **Nx CLI** 18.0.0+ (será instalado globalmente)
 
 ### Verificação de Instalação
 
-```bash
+````bash
 # Verificar Node.js
-node --version  # Deve ser 18+
+node --version  # Deve ser 20.17.0+
 
 # Verificar npm
-npm --version
+npm --version   # Deve ser 10.0.0+
 
 # Verificar Git
-git --version
+git --version   # Deve ser 2.40.0+
 
 # Verificar MongoDB
-mongod --version
-```
+mongod --version # Deve ser 7.0+
+
+# Verificar Redis (opcional)
+redis-server --version # Deve ser 7.0+
+
+### Verificação Automática
+
+```bash
+# Executar verificação automática de versões
+npm run check-versions
+
+# Ou executar setup completo
+npm run setup
+````
 
 ## 🔧 Configuração Inicial
 
@@ -56,6 +70,9 @@ npm install
 
 # Verificar instalação
 npm list
+
+# Verificar versões das tecnologias
+npm run check-versions
 ```
 
 ## 🔐 Configurações de Ambiente

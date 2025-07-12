@@ -23,28 +23,26 @@
 ### Commit: [novo hash]
 
 **Data:** 2025-01-27
-**Tipo:** chore
-**Descrição:** chore(env): configuração dos arquivos .env para dev, test e prod, e carregamento tipado
+**Tipo:** feat
+**Descrição:** feat(frontend): criação e validação do frontend React com Vite + TypeScript no monorepo
 
 #### Alterações Realizadas
 
-- [x] Criação dos arquivos env.development, env.test e env.production
-- [x] Adição de scripts para alternar ambientes
-- [x] Criação de config/env.config.ts para carregamento tipado
-- [x] Atualização do package.json com scripts de ambiente
+- [x] Geração da aplicação React usando Nx e Vite
+- [x] Estrutura criada em apps/frontend
+- [x] Validação da aplicação rodando em <http://localhost:4200/>
 
 #### Arquivos Modificados
 
-- [x] env.development - Ambiente de desenvolvimento
-- [x] env.test - Ambiente de testes
-- [x] env.production - Ambiente de produção
-- [x] config/env.config.ts - Carregamento e validação tipada
-- [x] package.json - Scripts de ambiente
+- [x] apps/frontend/ - Estrutura completa do frontend React
+- [x] nx.json, package.json, tsconfig.json - Atualizações automáticas Nx
 
 #### Próximos Passos
 
-- [x] 2.1 Criar aplicação NestJS com TypeScript
-- [ ] 3.1 Criar aplicação React com Vite + TypeScript
+- [ ] 3.1.2 Configurar Material-UI
+- [ ] 3.1.3 Configurar React Router
+- [ ] 3.1.4 Configurar Axios para requisições HTTP
+- [ ] 2.1.2 Configurar TypeORM com MongoDB
 
 ---
 
@@ -123,7 +121,7 @@
 
 #### 3.1 Configuração Base
 
-- [ ] 3.1.1 Criar aplicação React com Vite + TypeScript
+- [x] 3.1.1 Criar aplicação React com Vite + TypeScript
 - [ ] 3.1.2 Configurar Material-UI
 - [ ] 3.1.3 Configurar React Router
 - [ ] 3.1.4 Configurar Axios para requisições HTTP
