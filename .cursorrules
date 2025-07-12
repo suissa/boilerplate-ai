@@ -324,4 +324,37 @@ export class VerifyCodeDto {
 
 #### Próximos Passos:
 - [ ] [Próximas tarefas a serem realizadas]
-``` 
+```
+
+## 🔧 Configuração Inicial do Projeto
+
+### Regras para Configuração Inicial:
+- **Git Setup:** Sempre configurar Git antes de qualquer implementação
+- **Documentação:** Criar SETUP.md com instruções de configuração
+- **Ambiente:** Configurar variáveis de ambiente antes do desenvolvimento
+- **Dependências:** Instalar dependências base antes de criar aplicações
+
+### Sequência de Configuração Inicial:
+1. **Git Repository Setup**
+   - Inicializar repositório Git
+   - Conectar ao repositório remoto
+   - Fazer commit inicial com documentação
+   - Configurar branch main
+
+2. **Documentação de Setup**
+   - Criar SETUP.md com instruções completas
+   - Documentar configuração de ambiente
+   - Incluir comandos de setup
+   - Adicionar troubleshooting
+
+3. **Configuração de Ambiente**
+   - Configurar variáveis de ambiente
+   - Instalar dependências base
+   - Configurar ferramentas de desenvolvimento
+   - Validar configurações
+
+4. **Atualização de Status**
+   - Atualizar PROJECT_STATUS.md
+   - Documentar configurações realizadas
+   - Registrar decisões técnicas
+   - Preparar próximos passos 
