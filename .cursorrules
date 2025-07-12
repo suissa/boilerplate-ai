@@ -1,0 +1,327 @@
+# Regras do Projeto - Monorepo Nx (React + NestJS)
+
+## 🏗️ Arquitetura e Design Patterns
+
+### SOLID Principles
+- **S**ingle Responsibility: Cada classe/função deve ter uma única responsabilidade
+- **O**pen/Closed: Aberto para extensão, fechado para modificação
+- **L**iskov Substitution: Subtipos devem ser substituíveis por seus tipos base
+- **I**nterface Segregation: Interfaces específicas são melhores que interfaces genéricas
+- **D**ependency Inversion: Depender de abstrações, não de implementações concretas
+
+### Clean Architecture
+- **Entities**: Regras de negócio centrais (domínio)
+- **Use Cases**: Casos de uso da aplicação (aplicação)
+- **Interface Adapters**: Controllers, Presenters, Gateways (infraestrutura)
+- **Frameworks & Drivers**: Frameworks, DB, UI (externo)
+
+### Domain Driven Design (DDD)
+- **Entities**: Objetos com identidade única
+- **Value Objects**: Objetos imutáveis sem identidade
+- **Aggregates**: Clusters de entidades relacionadas
+- **Repositories**: Abstração para persistência
+- **Services**: Lógica de domínio que não pertence a entidades
+- **Events**: Comunicação entre bounded contexts
+
+## 🔐 Fluxo de Autenticação
+
+### Cadastro de Novo Usuário
+1. Cliente envia nome e email
+2. Sistema gera código de login único
+3. Sistema envia código por email
+4. Cliente digita código para ativar conta
+5. Cliente é logado automaticamente
+
+### Login de Usuário Existente
+1. Cliente clica em "Login"
+2. Cliente digita email
+3. Sistema gera novo código de login
+4. Sistema envia código por email
+5. Cliente digita código para logar
+6. Cliente é logado na plataforma
+
+### Segurança
+- Códigos de login expiram em 10 minutos
+- Máximo 3 tentativas por código
+- Rate limiting: 3 tentativas por email por hora
+- Logs de tentativas de login
+
+## 📁 Estrutura de Pastas
+
+### Backend (NestJS)
+```
+apps/backend/
+├── src/
+│   ├── domain/           # Entidades, Value Objects, Interfaces
+│   │   ├── entities/
+│   │   ├── value-objects/
+│   │   ├── repositories/
+│   │   └── services/
+│   ├── application/      # Use Cases, DTOs
+│   │   ├── use-cases/
+│   │   ├── dto/
+│   │   └── interfaces/
+│   ├── infrastructure/   # Implementações concretas
+│   │   ├── database/
+│   │   ├── external/
+│   │   └── config/
+│   └── presentation/     # Controllers, Middlewares
+│       ├── controllers/
+│       ├── middlewares/
+│       └── filters/
+```
+
+### Frontend (React)
+```
+apps/frontend/
+├── src/
+│   ├── domain/          # Entidades, Interfaces
+│   ├── application/     # Use Cases, Services
+│   ├── infrastructure/  # API, Storage
+│   └── presentation/    # Components, Pages
+```
+
+## 🔧 Padrões de Código
+
+### Nomenclatura
+- **Classes**: PascalCase (UserService, AuthController)
+- **Interfaces**: PascalCase com prefixo I (IUserRepository)
+- **Funções/Métodos**: camelCase (createUser, validateEmail)
+- **Variáveis**: camelCase (userData, isAuthenticated)
+- **Constantes**: UPPER_SNAKE_CASE (MAX_LOGIN_ATTEMPTS)
+- **Arquivos**: kebab-case (user-service.ts, auth-controller.ts)
+
+### Estrutura de Classes
+```typescript
+// ✅ Bom exemplo
+export class UserService {
+  constructor(
+    private readonly userRepository: IUserRepository,
+    private readonly emailService: IEmailService
+  ) {}
+
+  async createUser(userData: CreateUserDto): Promise<User> {
+    // Implementação
+  }
+}
+```
+
+### Injeção de Dependência
+- Sempre usar interfaces para dependências
+- Injetar dependências via constructor
+- Evitar new() dentro de classes de serviço
+
+## 🌐 RESTful APIs
+
+### Padrões de Endpoints
+- **POST** /auth/register - Cadastrar novo usuário
+- **POST** /auth/login - Solicitar código de login
+- **POST** /auth/verify-code - Verificar código de login
+- **GET** /auth/me - Dados do usuário logado
+- **POST** /auth/logout - Logout do usuário
+
+### Respostas Padrão
+```typescript
+// ✅ Sucesso
+{
+  "success": true,
+  "data": { ... },
+  "message": "Operação realizada com sucesso"
+}
+
+// ✅ Erro
+{
+  "success": false,
+  "error": {
+    "code": "VALIDATION_ERROR",
+    "message": "Dados inválidos",
+    "details": [...]
+  }
+}
+```
+
+### Status Codes
+- **200**: Sucesso
+- **201**: Criado com sucesso
+- **400**: Bad Request (validação)
+- **401**: Unauthorized
+- **403**: Forbidden
+- **404**: Not Found
+- **422**: Unprocessable Entity
+- **429**: Too Many Requests (rate limit)
+- **500**: Internal Server Error
+
+## 🧪 Testes
+
+### Estrutura de Testes
+- **Unit Tests**: Testar lógica isolada
+- **Integration Tests**: Testar integração entre camadas
+- **E2E Tests**: Testar fluxos completos
+
+### Padrões de Teste
+```typescript
+describe('UserService', () => {
+  let service: UserService;
+  let mockRepository: jest.Mocked<IUserRepository>;
+
+  beforeEach(() => {
+    mockRepository = createMockRepository();
+    service = new UserService(mockRepository);
+  });
+
+  it('should create user successfully', async () => {
+    // Arrange
+    const userData = { email: 'test@example.com' };
+    
+    // Act
+    const result = await service.createUser(userData);
+    
+    // Assert
+    expect(result).toBeDefined();
+    expect(mockRepository.save).toHaveBeenCalled();
+  });
+});
+```
+
+## 🔒 Segurança
+
+### Autenticação/Autorização
+- Códigos de login únicos e temporários
+- Rate limiting por email/IP
+- Validação de entrada
+- Sanitização de dados
+- Logs de segurança
+
+### Validação
+```typescript
+// ✅ Usar class-validator
+export class CreateUserDto {
+  @IsEmail()
+  @IsNotEmpty()
+  email: string;
+
+  @IsString()
+  @MinLength(2)
+  name: string;
+}
+
+export class LoginDto {
+  @IsEmail()
+  @IsNotEmpty()
+  email: string;
+}
+
+export class VerifyCodeDto {
+  @IsEmail()
+  @IsNotEmpty()
+  email: string;
+
+  @IsString()
+  @Length(6, 6)
+  code: string;
+}
+```
+
+## 📝 Documentação
+
+### Comentários
+- Documentar interfaces públicas
+- Explicar lógica complexa
+- Usar JSDoc para métodos públicos
+
+### README
+- Setup do projeto
+- Estrutura de pastas
+- Padrões de desenvolvimento
+- Como contribuir
+
+## 🚀 Performance
+
+### Backend
+- Paginação em listagens
+- Cache quando apropriado
+- Lazy loading
+- Otimização de queries
+
+### Frontend
+- Lazy loading de componentes
+- Memoização (useMemo, useCallback)
+- Code splitting
+- Otimização de re-renders
+
+## 🔄 Versionamento
+
+### Commits
+- Usar Conventional Commits
+- Exemplo: `feat(auth): add user registration endpoint`
+- Tipos: feat, fix, docs, style, refactor, test, chore
+
+### Branches
+- `main`: Código em produção
+- `develop`: Código em desenvolvimento
+- `feature/`: Novas funcionalidades
+- `fix/`: Correções
+- `hotfix/`: Correções urgentes
+
+## 📦 Dependências
+
+### Backend
+- NestJS (framework)
+- TypeORM (ORM)
+- class-validator (validação)
+- nodemailer (envio de emails)
+- bcrypt (hash)
+- rate-limiter-flexible (rate limiting)
+
+### Frontend
+- React (framework)
+- Material-UI (UI)
+- React Router (roteamento)
+- Axios (HTTP client)
+- React Query (cache)
+
+## 🎯 Regras Gerais
+
+1. **Simplicidade**: Código simples é melhor que código complexo
+2. **Legibilidade**: Código deve ser auto-documentado
+3. **Testabilidade**: Código deve ser fácil de testar
+4. **Manutenibilidade**: Fácil de modificar e estender
+5. **Reutilização**: Evitar duplicação de código
+6. **Consistência**: Seguir padrões estabelecidos
+7. **Performance**: Considerar performance desde o início
+
+## 🚫 Anti-patterns a Evitar
+
+- ❌ Classes com muitas responsabilidades
+- ❌ Dependências concretas em vez de abstrações
+- ❌ Lógica de negócio em controllers
+- ❌ Queries N+1
+- ❌ Hardcoded values
+- ❌ Código duplicado
+- ❌ Funções muito longas (>20 linhas)
+- ❌ Arquivos muito grandes (>300 linhas)
+
+## 📝 Atualização do Project Status
+
+### Regras para Atualização do PROJECT_STATUS.md:
+- **A cada commit significativo:** Atualizar a seção "Histórico de Commits"
+- **Ao completar tarefas:** Marcar checkboxes no checklist
+- **Ao encontrar problemas:** Documentar na seção "Problemas Conhecidos"
+- **Ao tomar decisões importantes:** Registrar em "Decisões Técnicas"
+
+### Formato do Histórico de Commits:
+```markdown
+### Commit: [hash do commit]
+**Data:** [data do commit]
+**Tipo:** [feat/fix/docs/style/refactor/test/chore]
+**Descrição:** [Descrição do commit]
+
+#### Alterações Realizadas:
+- [ ] [Lista detalhada de alterações]
+
+#### Arquivos Modificados:
+- [ ] [Lista de arquivos criados/modificados]
+
+#### Próximos Passos:
+- [ ] [Próximas tarefas a serem realizadas]
+``` 
