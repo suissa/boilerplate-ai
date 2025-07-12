@@ -20,37 +20,34 @@
 
 ## 🔄 Histórico de Commits e Implementações
 
-### Commit: 6510ce5
+### Commit: 90ec3f8
 
 **Data:** 2025-01-27
-**Tipo:** feat
-**Descrição:** feat(project): initial project setup with documentation and configuration
+**Tipo:** chore
+**Descrição:** chore(monorepo): estrutura inicial Nx, .gitignore e regras atualizadas
 
 #### Alterações Realizadas
 
-- [x] Configuração inicial do repositório Git
-- [x] Criação da documentação base do projeto
-- [x] Configuração das regras do projeto (.cursorrules)
-- [x] Criação do escopo detalhado (SCOPE.md)
-- [x] Configuração do status do projeto (PROJECT_STATUS.md)
-- [x] Criação das configurações de ambiente (env.example)
-- [x] Documentação de setup (ENV_SETUP.md)
-- [x] Configuração inicial do SETUP.md
+- [x] Inicialização do workspace Nx
+- [x] Criação da estrutura de pastas (apps/frontend, apps/backend, libs/shared)
+- [x] Configuração do .gitignore para monorepo
+- [x] Atualização das regras do projeto (.cursorrules)
+- [x] Instalação do Nx CLI globalmente
+- [x] Configuração inicial do package.json com scripts
 
 #### Arquivos Modificados
 
-- [x] .cursorrules - Regras do projeto
-- [x] SCOPE.md - Escopo detalhado
-- [x] PROJECT_STATUS.md - Status do projeto
-- [x] README.md - Documentação principal
-- [x] env.example - Configurações de ambiente
-- [x] ENV_SETUP.md - Instruções de setup
-- [x] SETUP.md - Configuração completa do projeto
+- [x] .gitignore - Configuração para monorepo Nx
+- [x] .cursorrules - Regras atualizadas
+- [x] nx.json - Configuração do workspace Nx
+- [x] package.json - Scripts e dependências atualizados
+- [x] apps/ - Estrutura de pastas criada
+- [x] libs/ - Estrutura de pastas criada
 
 #### Próximos Passos
 
-- [ ] 1.1 Inicializar workspace Nx
-- [ ] 1.2 Configurar estrutura de pastas
+- [x] 1.1 Inicializar workspace Nx
+- [x] 1.2 Configurar estrutura de pastas
 - [ ] 1.3 Configurar dependências compartilhadas
 
 ---
@@ -226,7 +223,7 @@
 
 ### Configuração
 
-- **Monorepo:** 0/5 (0%)
+- **Monorepo:** 2/5 (40%)
 - **Dependências:** 0/8 (0%)
 - **Scripts:** 0/4 (0%)
 
