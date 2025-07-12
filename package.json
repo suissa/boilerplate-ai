@@ -28,7 +28,8 @@
     "env:dev": "cp env.development .env",
     "env:test": "cp env.test .env",
     "env:prod": "cp env.production .env",
-    "validate:env": "node -e \"require('./config/env.config.ts').validateConfig()\""
+    "validate:env": "node -e \"require('./config/env.config.ts').validateConfig()\"",
+    "preinstall": "node preinstall.js"
   },
   "engines": {
     "node": ">=20.17.0",
