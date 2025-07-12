@@ -371,3 +371,13 @@ export class VerifyCodeDto {
   - arquivos binários e temporários do Windows/Mac
 - Nunca versionar arquivos de ambiente sensíveis (.env, local.env, etc)
 - Sempre revisar o `.gitignore` ao adicionar novas ferramentas ou estruturas ao monorepo. 
+
+## 📑 Atualização de Documentação
+
+- Sempre atualizar o PROJECT_STATUS.md e demais documentos relevantes (README.md, SETUP.md, SCOPE.md, etc) antes de realizar o push para o repositório remoto. 
+
+## 🚦 Validação antes de Commit
+
+- Sempre rodar a aplicação (ou testes mínimos) para validar se está funcionando antes de realizar commits.
+- A validação deve ser feita APENAS antes do commit, não antes de git add ou outras operações.
+- Se a aplicação não estiver funcionando, não realizar o commit até que o problema seja resolvido. 

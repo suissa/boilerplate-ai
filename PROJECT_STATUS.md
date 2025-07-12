@@ -43,7 +43,7 @@
 
 #### Próximos Passos
 
-- [ ] 2.1 Criar aplicação NestJS com TypeScript
+- [x] 2.1 Criar aplicação NestJS com TypeScript
 - [ ] 3.1 Criar aplicação React com Vite + TypeScript
 
 ---
@@ -65,6 +65,12 @@
   - [x] 1.4.3 Configurar script de testes **[Complexidade: Média]**
   - [x] 1.4.4 Configurar script de linting **[Complexidade: Baixa]**
 - [x] 1.5 Configurar arquivos .env para dev/test/prod **[Complexidade: Baixa]**
+
+### Fase 2: Backend NestJS (Sistema de Autenticação por Código)
+
+#### 2.1 Configuração Base
+
+- [x] 2.1.1 Criar aplicação NestJS com TypeScript
 
 ### Fase 2: Backend NestJS (Sistema de Autenticação por Código)
 
