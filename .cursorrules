@@ -358,3 +358,16 @@ export class VerifyCodeDto {
    - Documentar configurações realizadas
    - Registrar decisões técnicas
    - Preparar próximos passos 
+
+## 📦 Git Ignore
+
+- Sempre manter um arquivo `.gitignore` atualizado na raiz do projeto.
+- O `.gitignore` deve cobrir:
+  - node_modules, dist, build, .nx, .env, .env.*, !.env.example
+  - pastas de build de apps/libs
+  - arquivos temporários de IDEs (VSCode, .idea, etc)
+  - arquivos de sistema (Thumbs.db, .DS_Store)
+  - arquivos de log, coverage, arquivos de teste temporários
+  - arquivos binários e temporários do Windows/Mac
+- Nunca versionar arquivos de ambiente sensíveis (.env, local.env, etc)
+- Sempre revisar o `.gitignore` ao adicionar novas ferramentas ou estruturas ao monorepo. 

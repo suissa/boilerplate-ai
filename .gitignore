@@ -1,0 +1,69 @@
+# Node
+node_modules/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Dependency directories
+jspm_packages/
+
+# Build output
+/dist/
+/build/
+
+# Nx
+.nx/
+
+# VSCode
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Env
+.env
+.env.*
+!.env.example
+
+# IDEs
+.idea/
+*.iml
+
+# Coverage
+coverage/
+
+# Misc
+*.tgz
+*.swp
+
+# Libs
+libs/shared/dist/
+
+# Apps
+apps/*/dist/
+apps/*/build/
+
+# Others
+*.sublime-workspace
+*.sublime-project
+
+# Windows
+*.exe
+*.dll
+*.bat
+*.cmd
+
+# Mac
+.AppleDouble
+.LSOverride
+
+# Test
+*.test.ts.snap
+
+# Local
+local.env 

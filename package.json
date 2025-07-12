@@ -1,0 +1,48 @@
+{
+  "name": "boilerplate-ai",
+  "version": "1.0.0",
+  "description": "Monorepo Nx com React + NestJS - Sistema de autenticação por código",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "libs/*"
+  ],
+  "scripts": {
+    "check-versions": "node check-versions.js",
+    "setup": "npm run check-versions && echo '✅ Setup verificado com sucesso!'",
+    "dev": "echo '🚀 Iniciando desenvolvimento...' && npm run check-versions",
+    "build": "echo '🔨 Build em desenvolvimento...'",
+    "test": "echo '🧪 Testes em desenvolvimento...'",
+    "lint": "echo '🔍 Linting em desenvolvimento...'",
+    "lint:fix": "echo '🔧 Corrigindo problemas de linting...'"
+  },
+  "engines": {
+    "node": ">=20.17.0",
+    "npm": ">=10.0.0"
+  },
+  "keywords": [
+    "monorepo",
+    "nx",
+    "react",
+    "nestjs",
+    "typescript",
+    "authentication",
+    "email-code"
+  ],
+  "author": "Rasta",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rastamansp/boilerplate-ai.git"
+  },
+  "bugs": {
+    "url": "https://github.com/rastamansp/boilerplate-ai/issues"
+  },
+  "homepage": "https://github.com/rastamansp/boilerplate-ai#readme",
+  "devDependencies": {
+    "semver": "^7.5.4",
+    "nx": "21.2.3"
+  },
+  "dependencies": {},
+  "packageManager": "npm@10.0.0"
+}
